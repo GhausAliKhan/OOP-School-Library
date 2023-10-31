@@ -13,4 +13,11 @@ class Person
   def can_use_services?
     of_age? || @parent_permission
   end
+
+  private
+
+  # Private method to check if the person is of age
+  def of_age?
+    @age >= 18
+  end
 end
