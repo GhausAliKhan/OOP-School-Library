@@ -83,9 +83,24 @@ class App
   end
 
   def create_rental
+    return unless valid_conditions_for_rental?
+
+    book_index = select_book
+    return if book_index.nil?
+
+    person_index = select_person
+    return if person_index.nil?
+
+    create_new_rental(book_index, person_index)
   end
 
   def valid_conditions_for_rental?
+    if @books.empty? || @people.empty?
+      puts 'There must be at least one book and one person to create a rental.'
+      false
+    else
+      true
+    end
   end
 
   def select_book
