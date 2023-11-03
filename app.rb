@@ -104,9 +104,19 @@ class App
   end
 
   def select_book
+    list_books
+    book_index = gets.chomp.to_i
+    return nil unless book_index.between?(0, @books.length - 1)
+
+    book_index
   end
 
   def select_person
+    list_people
+    person_index = gets.chomp.to_i
+    return nil unless person_index.between?(0, @people.length - 1)
+
+    person_index
   end
 
   def list_books
