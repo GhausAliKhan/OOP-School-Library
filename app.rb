@@ -142,5 +142,21 @@ class App
   end
 
   def list_all_rentals_for_person
+    print 'ID of person: '
+    id = gets.chomp.to_i
+    person = @people.find { |p| p.id == id }
+    if person.nil?
+      puts 'Person not found.'
+      return
+    end
+    rentals = person.rentals
+    if rentals.empty?
+      puts "No rentals found for person with ID #{id}."
+    else
+      puts 'Rentals:'
+      rentals.each do |rental|
+        puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
+      end
+    end
   end
 end
