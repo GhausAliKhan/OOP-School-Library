@@ -134,6 +134,11 @@ class App
   end
 
   def create_new_rental
+    print "\nDate: "
+    date = gets.chomp
+    new_rental = Rental.new(date, @books[book_index], @people[person_index])
+    @books[book_index].add_rental(new_rental)
+    puts 'Rental created successfully'
   end
 
   def list_all_rentals_for_person
