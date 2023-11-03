@@ -32,3 +32,16 @@ def execute_choice(app, choice)
     puts 'Invalid option. Please try again.'
   end
 end
+
+def main
+  puts 'Welcome to School Library App!'
+  app = App.new
+
+  loop do
+    display_menu
+    choice = gets.chomp
+    execute_choice(app, choice)
+  end
+end
+
+main
