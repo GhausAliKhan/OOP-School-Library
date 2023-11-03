@@ -91,7 +91,12 @@ class App
     person_index = select_person
     return if person_index.nil?
 
-    create_new_rental(book_index, person_index)
+    print "\nDate: "
+    date = gets.chomp
+
+    new_rental = Rental.new(date, @books[book_index], @people[person_index])
+    @books[book_index].add_rental(new_rental)
+    puts 'Rental created successfully'
   end
 
   def valid_conditions_for_rental?
@@ -131,14 +136,6 @@ class App
     @people.each_with_index do |person, index|
       puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
-  end
-
-  def create_new_rental
-    print "\nDate: "
-    date = gets.chomp
-    new_rental = Rental.new(date, @books[book_index], @people[person_index])
-    @books[book_index].add_rental(new_rental)
-    puts 'Rental created successfully'
   end
 
   def list_all_rentals_for_person
