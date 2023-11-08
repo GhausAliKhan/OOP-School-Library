@@ -11,6 +11,30 @@ def display_menu
   puts '7 - Exit'
 end
 
+def handle_books_list(app)
+  app.list_all_books_action
+end
+
+def handle_people_list(app)
+  app.list_all_people_action
+end
+
+def handle_create_person(app)
+  app.create_person_action
+end
+
+def handle_create_book(app)
+  app.create_book_action
+end
+
+def handle_create_rental(app)
+  app.create_rental_action
+end
+
+def handle_show_rental(app)
+  app.list_all_rentals_for_person_action
+end
+
 # Initialize the App
 app = App.new
 
@@ -20,8 +44,23 @@ loop do
   choice = gets.chomp
   break if choice == 'quit'
 
-  # Delegate the actual work to the App class
-  app.handle_user_choice(choice)
+  case choice
+  when '1'
+    handle_books_list(app)
+  when '2'
+    handle_people_list(app)
+  when '3'
+    handle_create_person(app)
+  when '4'
+    handle_create_book(app)
+  when '5'
+    handle_create_rental(app)
+  when '6'
+    handle_show_rental(app)
+  when '7'
+    puts 'Thanks for using this app!'
+    break
+  else
+    puts 'Incorrect choice, please choose a number between 1 and 7'
+  end
 end
-
-main

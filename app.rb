@@ -15,6 +15,14 @@ class App
     @rental_manager = RentalManager.new(@book_manager, @person_manager)
   end
 
+  def list_all_books_action
+    @book_manager.list_all_books
+  end
+
+  def list_all_people_action
+    @person_manager.list_all_people
+  end
+
   def create_person_action
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     choice = gets.chomp
@@ -56,24 +64,7 @@ class App
     @rental_manager.create_new_rental(book_index, person_index, date)
   end
 
-  def handle_user_choice(choice)
-    actions = {
-      '1' => -> { @book_manager.list_all_books },
-      '2' => -> { @person_manager.list_all_people },
-      '3' => -> { create_person_action },
-      '4' => -> { create_book_action },
-      '5' => -> { create_rental_action },
-      '6' => -> { @rental_manager.list_all_rentals_for_person },
-      '7' => lambda {
-               puts 'Thank you for using this app!'
-               exit
-             }
-    }
-
-    if actions.key?(choice)
-      actions[choice].call
-    else
-      puts 'Invalid option. Please try again.'
-    end
+  def list_all_rentals_for_person_action
+    @rental_manager.list_all_rentals_for_person
   end
 end
