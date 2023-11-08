@@ -126,7 +126,6 @@ To run tests:
 
 Features to be added in upcoming iterations:
 
-- **Project 5**: Refactor code to improve program efficiency and maintainability.
 - **Project 6**: Implement data persistence to save and load library data.
 - **Project 7**: Introduce unit tests to ensure code reliability.
 
