@@ -72,5 +72,6 @@ class App
     puts 'Thanks for using this app!'
     @person_manager.save_people_to_json
     @book_manager.save_books_to_json
+    @rental_manager.save_rentals_to_json
   end
 end
