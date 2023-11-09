@@ -124,9 +124,7 @@ To run tests:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-Features to be added in upcoming iterations:
-
-- **Project 7**: Introduce unit tests to ensure code reliability.
+Features to be added in upcoming iterations: Coming Soon!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
