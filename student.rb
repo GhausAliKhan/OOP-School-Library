@@ -10,4 +10,18 @@ class Student < Person
     @classroom = classroom
     classroom.add_student(self)
   end
+
+  def to_json(*_args)
+    {
+      'JSON_CLASS' => self.class.name,
+      'name' => @name,
+      'age' => @age,
+      'id' => @id,
+      'parent_permission' => @parent_permission
+    }.to_json
+  end
+
+  def self.new_from_json(json_hash)
+    new(json_hash['age'], json_hash['name'], parent_permission: json_hash['parent_permission'])
+  end
 end
