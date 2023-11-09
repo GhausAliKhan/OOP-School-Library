@@ -1,3 +1,5 @@
+require 'json'
+
 # Class responsible for book management
 class BookManager
   attr_accessor :books
@@ -21,5 +23,12 @@ class BookManager
     new_book = Book.new(title, author)
     @books << new_book
     puts 'Book created successfully'
+  end
+
+  def save_books_to_json
+    File.open('books.json', 'w') do |f|
+      data_to_write = @books.map(&:to_json).to_json
+      f.write(data_to_write)
+    end
   end
 end
