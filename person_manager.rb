@@ -6,6 +6,24 @@ class PersonManager
 
   def initialize
     @people = []
+    load_people_from_json if File.exist?('people.json')
+  end
+
+  def load_people_from_json
+    json_data = File.read('people.json')
+    array_of_strings = JSON.parse(json_data)
+    array_of_strings.each do |string|
+      hash = JSON.parse(string)
+      json_class = hash['JSON_CLASS']
+      person = nil
+      if json_class == 'Student'
+        person = Student.new_from_json(hash)
+      elsif json_class == 'Teacher'
+        person = Teacher.new_from_json(hash)
+      end
+      person.id = hash['id'] unless person.nil?
+      @people << person unless person.nil?
+    end
   end
 
   def list_all_people
