@@ -11,37 +11,56 @@ def display_menu
   puts '7 - Exit'
 end
 
-def execute_choice(app, choice)
-  actions = {
-    '1' => -> { app.list_all_books },
-    '2' => -> { app.list_all_people },
-    '3' => -> { app.create_person },
-    '4' => -> { app.create_book },
-    '5' => -> { app.create_rental },
-    '6' => -> { app.list_all_rentals_for_person },
-    '7' => lambda {
-      puts 'Thank you for using this app!'
-      exit
-    }
-  }
+def handle_books_list(app)
+  app.list_all_books_action
+end
 
-  action = actions[choice]
-  if action
-    action.call
+def handle_people_list(app)
+  app.list_all_people_action
+end
+
+def handle_create_person(app)
+  app.create_person_action
+end
+
+def handle_create_book(app)
+  app.create_book_action
+end
+
+def handle_create_rental(app)
+  app.create_rental_action
+end
+
+def handle_show_rental(app)
+  app.list_all_rentals_for_person_action
+end
+
+# Initialize the App
+app = App.new
+
+# Main program loop
+loop do
+  display_menu
+  choice = gets.chomp
+  break if choice == 'quit'
+
+  case choice
+  when '1'
+    handle_books_list(app)
+  when '2'
+    handle_people_list(app)
+  when '3'
+    handle_create_person(app)
+  when '4'
+    handle_create_book(app)
+  when '5'
+    handle_create_rental(app)
+  when '6'
+    handle_show_rental(app)
+  when '7'
+    puts 'Thanks for using this app!'
+    break
   else
-    puts 'Invalid option. Please try again.'
+    puts 'Incorrect choice, please choose a number between 1 and 7'
   end
 end
-
-def main
-  puts 'Welcome to School Library App!'
-  app = App.new
-
-  loop do
-    display_menu
-    choice = gets.chomp
-    execute_choice(app, choice)
-  end
-end
-
-main
