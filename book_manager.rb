@@ -6,6 +6,7 @@ class BookManager
 
   def initialize
     @books = []
+    load_books_from_json if File.exist?('books.json')
   end
 
   def list_all_books
@@ -29,6 +30,21 @@ class BookManager
     File.open('books.json', 'w') do |f|
       data_to_write = @books.map(&:to_json).to_json
       f.write(data_to_write)
+    end
+  end
+
+  def load_books_from_json
+    json_data = File.read('books.json')
+    if json_data.strip.empty?
+      puts 'No books data to load.'
+      return
+    end
+
+    array_of_strings = JSON.parse(json_data)
+
+    array_of_strings.each do |string|
+      hash = JSON.parse(string)
+      @books << Book.new(hash['title'], hash['author'])
     end
   end
 end
