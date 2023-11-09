@@ -67,4 +67,11 @@ class App
   def list_all_rentals_for_person_action
     @rental_manager.list_all_rentals_for_person
   end
+
+  def program_exit_action
+    puts 'Thanks for using this app!'
+    @person_manager.save_people_to_json
+    @book_manager.save_books_to_json
+    @rental_manager.save_rentals_to_json
+  end
 end

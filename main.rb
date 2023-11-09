@@ -35,6 +35,10 @@ def handle_show_rental(app)
   app.list_all_rentals_for_person_action
 end
 
+def handle_exit(app)
+  app.program_exit_action
+end
+
 # Initialize the App
 app = App.new
 
@@ -58,7 +62,7 @@ loop do
   when '6'
     handle_show_rental(app)
   when '7'
-    puts 'Thanks for using this app!'
+    handle_exit(app)
     break
   else
     puts 'Incorrect choice, please choose a number between 1 and 7'
