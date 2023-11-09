@@ -67,4 +67,8 @@ class App
   def list_all_rentals_for_person_action
     @rental_manager.list_all_rentals_for_person
   end
+
+  def program_exit_action
+    puts 'Thanks for using this app!'
+  end
 end
