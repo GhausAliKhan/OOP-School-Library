@@ -126,7 +126,6 @@ To run tests:
 
 Features to be added in upcoming iterations:
 
-- **Project 6**: Implement data persistence to save and load library data.
 - **Project 7**: Introduce unit tests to ensure code reliability.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
