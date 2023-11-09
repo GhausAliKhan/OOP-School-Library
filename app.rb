@@ -70,5 +70,6 @@ class App
 
   def program_exit_action
     puts 'Thanks for using this app!'
+    @person_manager.save_people_to_json
   end
 end
